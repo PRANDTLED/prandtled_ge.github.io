@@ -18,21 +18,21 @@
       <div class="col-md-6 offset-md-3">
         <form id="tg">
           <div class="form-group">
-            <label class="form-label"> <strong>Город</strong> </label>
+            <label class="form-label"> <strong>ქალაქი</strong> </label>
             <select id="city" class="form-select">
-              <option selected value="1">Тбилиси</option>
-              <option value="2">Батуми</option>
+              <option selected value="1">თბილისი</option>
+              <option value="2">ბათუმი</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label mt-2"> <strong>Тип сделки</strong> </label>
+            <label class="form-label mt-2"> <strong>გარიგების ტიპი</strong> </label>
             <select id="deal" class="form-select">
-              <option selected value="3">Аренда</option>
-              <option value="7">Аренда посуточно</option>
-              <option value="1">Покупка</option>
+              <option selected value="3">ქირავდება</option>
+              <option value="7">ქირავდება დღიურად</option>
+              <option value="1">იყიდება</option>
             </select>
             <label class="form-label mt-2"
-              ><strong>Тип недвижемого имущества</strong></label
+              ><strong>უძრავი ქონების ტიპი</strong></label
             >
             <div class="form-group">
               <input
@@ -45,7 +45,7 @@
                 id="btn-check-1"
                 class="btn btn-outline-success"
                 for="btn-check-outlined"
-                >Квартиры</label
+                >ბინები</label
               >
               <input
                 type="checkbox"
@@ -54,7 +54,7 @@
                 autocomplete="off"
               />
               <label class="btn btn-outline-success" for="btn-check-2-outlined"
-                >Дома и дачи</label
+                >სახლები და აგარაკები</label
               >
               <input
                 type="checkbox"
@@ -63,7 +63,7 @@
                 autocomplete="off"
               />
               <label class="btn btn-outline-success" for="btn-check-3-outlined"
-                >Гостиницы</label
+                >სასტუმროები</label
               >
               <input
                 type="checkbox"
@@ -74,11 +74,11 @@
               <label
                 class="btn btn-outline-success mt-2"
                 for="btn-check-4-outlined"
-                >Коммерческая площадь</label
+                >კომერციული ფართები</label
               >
 
               <div>
-                <label class="form-label mt-2"><strong>Валюта</strong></label>
+                <label class="form-label mt-2"><strong>ვალუტა</strong></label>
               </div>
               <div class="form-group">
                 <input
@@ -105,18 +105,18 @@
                 >
               </div>
               <div>
-                <label class="form-label mt-2"><strong>Цена</strong></label>
+                <label class="form-label mt-2"><strong>ფასი</strong></label>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-text">От</span>
+                  <span class="input-group-text">Დან</span>
                   <input
                     id="pricefrom"
                     type="text"
                     class="form-control"
                     placeholder="1000"
                   />
-                  <span class="input-group-text">До</span>
+                  <span class="input-group-text">მდე</span>
                   <input
                     id="priceto"
                     type="text"
@@ -126,19 +126,19 @@
                 </div>
                 <div>
                   <label class="form-label mt-2"
-                    ><strong>Площадь</strong></label
+                    ><strong>მოედანი</strong></label
                   >
                 </div>
                 <div class="form-group">
                   <div class="input-group">
-                    <span class="input-group-text">От</span>
+                    <span class="input-group-text">Დან</span>
                     <input
                       type="text"
                       class="form-control"
                       id="squarefrom"
                       placeholder="20м²"
                     />
-                    <span class="input-group-text">До</span>
+                    <span class="input-group-text">მდე</span>
                     <input
                       type="text"
                       class="form-control"
@@ -152,7 +152,7 @@
           </div>
           <div>
             <label class="form-label mt-2"
-              ><strong>Количество комнат</strong></label
+              ><strong>Ოთახების რაოდენობა</strong></label
             >
           </div>
           <input
@@ -192,11 +192,6 @@
           <label class="btn btn-outline-success" for="btn-check-8-outlined"
             >4+</label
           >
-          <div>
-            <button type="submit" class="btn btn-success mt-4">
-              Сохранить
-            </button>
-          </div>
         </form>
       </div>
     </div>
@@ -208,75 +203,5 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="app.js"></script>
-    <script>
-      document.getElementById("tg").addEventListener("submit", function (e) {
-        e.preventDefault();
-        let message = `https://www.myhome.ge/ru/s/?`;
-        const city = document.getElementById("city");
-        if (city.value === "1") {
-          message += `Keyword=Тбилиси&cities=1996871&GID=1996871`;
-        }
-        if (city.value === "2") {
-          message += `Keyword=Батуми&cities=8742159&GID=8742159`;
-        }
-        const deal = document.getElementById("deal");
-        message += `&AdTypeID=${deal.value}`;
-        const type1 = document.getElementById("btn-check-outlined");
-        if (type1.checked === true) {
-          message += `&PrTypeID[]=1`;
-        }
-        const type2 = document.getElementById("btn-check-2-outlined");
-        if (type2.checked === true) {
-          message += `&PrTypeID[]=2`;
-        }
-        const type3 = document.getElementById("btn-check-3-outlined");
-        if (type3.checked === true) {
-          message += `&PrTypeID[]=7`;
-        }
-        const type4 = document.getElementById("btn-check-4-outlined");
-        if (type4.checked === true) {
-          message += `&PrTypeID[]=4`;
-        }
-        const currency1 = document.getElementById("success-outlined");
-        if (currency1.checked === true) {
-          message += `&FCurrencyID=1`;
-        }
-        const currency2 = document.getElementById("danger-outlined");
-        if (currency2.checked === true) {
-          message += `&FCurrencyID=2`;
-        }
-        const pricefrom = document.getElementById("pricefrom");
-        const priceto = document.getElementById("priceto");
-        if (pricefrom.value !== "") {
-          if (priceto.value !== "") {
-            message += `&FPriceFrom=${pricefrom.value}&FPriceTo=${priceto.value}`;
-          }
-        }
-        const squarefrom = document.getElementById("squarefrom");
-        const squareto = document.getElementById("squareto");
-        if (pricefrom.value !== "") {
-          if (priceto.value !== "") {
-            message += `&AreaSizeFrom=${squarefrom.value}&AreaSizeTo=${squareto.value}`;
-          }
-        }
-        const rooms1 = document.getElementById("btn-check-5-outlined");
-        if (rooms1.checked === true) {
-          message += `&RoomNums[]=1`;
-        }
-        const rooms2 = document.getElementById("btn-check-6-outlined");
-        if (rooms2.checked === true) {
-          message += `&RoomNums[]=2`;
-        }
-        const rooms3 = document.getElementById("btn-check-7-outlined");
-        if (rooms3.checked === true) {
-          message += `&RoomNums[]=3`;
-        }
-        const rooms4 = document.getElementById("btn-check-8-outlined");
-        if (rooms4.checked === true) {
-          message += `&RoomNums[]=4`;
-        }
-        console.log(message);
-      });
-    </script>
   </body>
 </html>
