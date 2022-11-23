@@ -11,6 +11,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function () {
   let message_ss = `?`;
   let message_ss_deal = `:`;
   let message_ss_type = `:`;
+  let message_mh_type = `:`;
   let message = `?`;
   const city = document.getElementById("city");
   if (city.value === "1") {
@@ -26,22 +27,22 @@ Telegram.WebApp.onEvent("mainButtonClicked", function () {
   message_ss_deal += `${deal.value}:`;
   const type1 = document.getElementById("btn-check-outlined");
   if (type1.checked === true) {
-    message += `&PrTypeID[]=1`;
+    message_mh_type += `/&PrTypeID[]=1`;
     message_ss_type += `/bina`;
   }
   const type2 = document.getElementById("btn-check-2-outlined");
   if (type2.checked === true) {
-    message += `&PrTypeID[]=2`;
+    message_mh_type += `/&PrTypeID[]=2`;
     message_ss_type += `/kerdzo-saxli`;
   }
   const type3 = document.getElementById("btn-check-3-outlined");
   if (type3.checked === true) {
-    message += `&PrTypeID[]=7`;
+    message_mh_type += `/&PrTypeID[]=7`;
     message_ss_type += `/sastumro`;
   }
   const type4 = document.getElementById("btn-check-4-outlined");
   if (type4.checked === true) {
-    message += `&PrTypeID[]=4`;
+    message_mh_type += `/&PrTypeID[]=4`;
     message_ss_type += `/komerciuli`;
   }
   const currency1 = document.getElementById("success-outlined");
@@ -88,8 +89,14 @@ Telegram.WebApp.onEvent("mainButtonClicked", function () {
     message += `&RoomNums[]=4`;
     message_ss += `&Rooms=4`;
   }
+  const owner = document.getElementById("btn-check-9-outlined");
+  if (owner.checked === true) {
+    message += `&OwnerTypeID[]=1`;
+    message_ss += `&IndividualEntityOnly=true`;
+  }
   message += message_ss_type;
   message += message_ss_deal;
   message += message_ss;
+  message += message_mh_type;
   tg.sendData(message);
 });
