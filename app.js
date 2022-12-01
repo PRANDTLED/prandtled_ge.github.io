@@ -4,7 +4,7 @@ tg.expand();
 
 tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#198754";
-tg.MainButton.text = "Გადარჩენა";
+tg.MainButton.text = "ძებნა";
 tg.MainButton.show();
 
 Telegram.WebApp.onEvent("mainButtonClicked", function () {
