@@ -98,6 +98,10 @@ Telegram.WebApp.onEvent("mainButtonClicked", function () {
     message += `&OwnerTypeID=1`;
     message_ss += `&IndividualEntityOnly=true`;
   }
+  if (owner.checked === false) {
+    message += `&OwnerTypeID=1`;
+    message_ss += `&IndividualEntityOnly=true`;
+  }
   message += message_ss_type;
   message += message_ss_deal;
   message += message_ss;
