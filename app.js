@@ -57,11 +57,11 @@ Telegram.WebApp.onEvent("mainButtonClicked", function () {
   const priceto = document.getElementById("priceto");
   if (pricefrom.value !== "") {
     message += `&FPriceFrom=${pricefrom.value}`;
-    message_ss = `&PriceFrom=${pricefrom.value}`;
+    message_ss += `&PriceFrom=${pricefrom.value}`;
   }
   if (priceto.value !== "") {
     message += `&FPriceTo=${priceto.value}`;
-    message_ss = `&PriceTo=${priceto.value}`;
+    message_ss += `&PriceTo=${priceto.value}`;
   }
   const squarefrom = document.getElementById("squarefrom");
   const squareto = document.getElementById("squareto");
